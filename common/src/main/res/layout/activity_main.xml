@@ -5,60 +5,70 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/background"
+    tools:context=".Activity_PanelBase">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="android:layout_centerVertical=&quot;true&quot;" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/main_LBL_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_height"
-        android:text="@string/App_Title"
-        android:gravity="center"
         android:autoSizeTextType="uniform"
+        android:background="?attr/colorPrimary"
+        android:gravity="center"
         android:maxLines="1"
         android:padding="@dimen/padding_app_title"
-        android:textColor="@color/white"
-        android:background="?attr/colorPrimary"/>
+        android:text="@string/App_Title"
+        android:textColor="@color/white" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/main_LBL_streak"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_below="@id/main_LBL_title"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="8dp"
+        android:autoSizeTextType="uniform"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="@string/streak"
+        android:textStyle="bold" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/main_IMG_glass"
         android:layout_width="match_parent"
         android:layout_height="@dimen/big_image_height"
-        android:layout_marginVertical="@dimen/margin_vertical_64"
-        android:src="@drawable/glass_24"
-        android:tint="@color/blue500_opacity30"
-        android:layout_below="@id/main_LBL_title"/>
+        android:layout_below="@id/main_LBL_streak"
+        android:layout_marginVertical="@dimen/margin_vertical_32"
+        android:src="@drawable/baseline_image_24"
+        android:tint="@color/blue500_opacity30" />
+
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/main_LBL_counter"
         android:layout_width="match_parent"
         android:layout_height="@dimen/big_image_height"
-        android:layout_marginTop="@dimen/margin_vertical_64"
-        android:layout_below="@id/main_LBL_title"
-        android:text="@string/counter_text"
+        android:layout_below="@id/main_LBL_streak"
         android:layout_marginHorizontal="32dp"
-        android:textStyle="bold"
-        android:gravity="center"
+        android:layout_marginTop="@dimen/margin_vertical_32"
         android:autoSizeTextType="uniform"
-        android:maxLines="2" />
+        android:gravity="center"
+        android:maxLines="2"
+        android:text="@string/counter_text"
+        android:textStyle="bold" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/main_LBL_until_goal"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginVertical="32dp"
         android:layout_below="@id/main_LBL_counter"
-        android:text="@string/counter_text_left_until_goal"
         android:layout_marginHorizontal="32dp"
-        android:textStyle="bold"
-        android:gravity="center"
+        android:layout_marginVertical="16dp"
         android:autoSizeTextType="uniform"
-        android:maxLines="2" />
+        android:gravity="center"
+        android:maxLines="2"
+        android:text="@string/counter_text_left_until_goal"
+        android:textStyle="bold" />
 
 <com.google.android.material.button.MaterialButton
     android:id="@+id/main_BTN_add"
@@ -74,12 +84,24 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/main_LST_cupTypes"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="150dp"
         android:layout_below="@id/main_BTN_add"
         android:layout_marginHorizontal="32dp"
-        android:layout_marginVertical="32dp"
+        android:layout_marginTop="32dp"
         android:scrollbars="horizontal"
-        tools:listitem="@layout/horizontal_item"
-        android:visibility="invisible"/>
+        android:visibility="invisible"
+        tools:listitem="@layout/horizontal_item" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/main_BTN_save"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@id/main_LST_cupTypes"
+        android:layout_centerHorizontal="true"
+        android:text="@string/save"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:icon="@drawable/check_circle_24"
+        app:iconGravity="start" />
 
 </RelativeLayout>

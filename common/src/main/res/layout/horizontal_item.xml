@@ -18,24 +18,23 @@
         app:cardElevation="@dimen/data_elevation">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/item_CARD_background"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="5dp"
-            android:layout_marginStart="5dp">
+            android:layout_height="match_parent">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/item_IMG_photo"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_marginTop="6dp"
+                android:padding="10dp"
                 android:scaleType="fitCenter"
-                tools:src="@drawable/glass_24"
                 android:tint="?attr/colorPrimary"
                 app:layout_constraintBottom_toTopOf="@id/item_LBL_type"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="6dp"
-                android:padding="10dp"/>
+                tools:src="@drawable/baseline_image_24" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/item_LBL_type"
@@ -58,6 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="5dp"
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"

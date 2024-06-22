@@ -1,10 +1,15 @@
-package com.example.androidb_hw1;
+package com.example.common;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.util.ArrayList;
 
 public class SharedPreferencesManager {
-    private static volatile SharedPreferencesManager instance = null;
+
+    private static SharedPreferencesManager instance = null;
     private static final String DB_FILE = "DB_FILE";
     private SharedPreferences sharedPref;
 
@@ -24,6 +29,13 @@ public class SharedPreferencesManager {
         return instance;
     }
 
+    public void putBoolean(String KEY, boolean value) {
+        sharedPref.edit().putBoolean(KEY, value).apply();
+    }
+
+    public boolean getBoolean(String KEY, boolean defaultValue) {
+        return sharedPref.getBoolean(KEY, defaultValue);
+    }
     public void putInt(String key, int value) {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt(key, value);
@@ -42,5 +54,22 @@ public class SharedPreferencesManager {
 
     public String getString(String key, String defaultValue) {
         return sharedPref.getString(key, defaultValue);
+    }
+
+
+    public <T> void putArray(String KEY, ArrayList<T> array) {
+        String json = new Gson().toJson(array);
+        sharedPref.edit().putString(KEY, json).apply();
+    }
+
+    public <T> ArrayList<T> getArray(String KEY, TypeToken typeToken) {
+        // type token == new TypeToken<ArrayList<YOUR_CLASS>>() {}
+        ArrayList<T> arr = null;
+        try {
+            arr = new Gson().fromJson(sharedPref.getString(KEY, ""), typeToken.getType());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return arr;
     }
 }

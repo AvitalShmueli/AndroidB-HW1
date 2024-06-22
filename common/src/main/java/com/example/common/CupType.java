@@ -1,9 +1,12 @@
-package com.example.androidb_hw1;
+package com.example.common;
+
+import androidx.annotation.NonNull;
 
 public class CupType {
     private String type = "";
     private int capacity = 0;
     private int drawableImg = 0;
+    private boolean isSelected = false;
 
     public CupType() {
     }
@@ -41,4 +44,18 @@ public class CupType {
         return this;
     }
 
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public CupType setSelected(boolean selected) {
+        isSelected = selected;
+        return this;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "capacity: "+capacity+ " isSelected? "+String.valueOf(isSelected);
+    }
 }

@@ -3,6 +3,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#2196F3</color>
-    <color name="blue500_opacity30">#4D2196F3</color>
+    <color name="blue500_opacity30">#D92196F3</color>
     <color name="blackish">#333333</color>
+    <color name="GhostWhite">#F8F8FF</color>
+    <color name="background">@color/blackish</color>
 </resources>

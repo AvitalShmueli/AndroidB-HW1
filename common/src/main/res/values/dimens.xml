@@ -3,7 +3,7 @@
     <dimen name="padding_app_title">8dp</dimen>
     <dimen name="big_image_height">180dp</dimen>
     <dimen name="title_height">50dp</dimen>
-    <dimen name="margin_vertical_32">64dp</dimen>
+    <dimen name="margin_vertical_32">32dp</dimen>
     <dimen name="data_elevation">5dp</dimen>
     <dimen name="data_corner_radius">5dp</dimen>
     <dimen name="card_height">100dp</dimen>
