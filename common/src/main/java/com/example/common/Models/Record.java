@@ -1,10 +1,8 @@
-package com.example.common;
-
-import androidx.annotation.Nullable;
+package com.example.common.Models;
 
 public class Record {
     private String date;
-    private int ml;
+    private int capacity;
 
     public Record() {
     }
@@ -18,17 +16,17 @@ public class Record {
         return this;
     }
 
-    public int getMl() {
-        return ml;
+    public int getCapacity() {
+        return capacity;
     }
 
-    public Record setMl(int ml) {
-        this.ml = ml;
+    public Record setCapacity(int capacity) {
+        this.capacity = capacity;
         return this;
     }
 
-    public Record addML(int ml){
-        this.ml += ml;
+    public Record addAmount(int amount){
+        this.capacity += amount;
         return this;
     }
 
@@ -40,7 +38,7 @@ public class Record {
     public String toString() {
         return "Record{" +
                 "date='" + date + '\'' +
-                ", ml=" + ml +
+                ", capacity=" + capacity +
                 '}';
     }
 }

@@ -1,4 +1,4 @@
-package com.example.common;
+package com.example.common.Utilities;
 
 import android.content.Context;
 import android.content.SharedPreferences;

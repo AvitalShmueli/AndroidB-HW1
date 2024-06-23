@@ -1,4 +1,4 @@
-package com.example.common;
+package com.example.common.Models;
 
 import androidx.annotation.NonNull;
 
@@ -7,14 +7,16 @@ public class CupType {
     private int capacity = 0;
     private int drawableImg = 0;
     private boolean isSelected = false;
+    private String unit = "ml";
 
     public CupType() {
     }
 
-    public CupType(String type, int capacity, int drawableImg) {
+    public CupType(String type, int capacity, int drawableImg, String unit) {
         this.type = type;
         this.capacity = capacity;
         this.drawableImg = drawableImg;
+        this.unit = unit;
     }
 
     public String getType() {
@@ -32,6 +34,15 @@ public class CupType {
 
     public CupType setCapacity(int capacity) {
         this.capacity = capacity;
+        return this;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public CupType setUnit(String unit) {
+        this.unit = unit;
         return this;
     }
 

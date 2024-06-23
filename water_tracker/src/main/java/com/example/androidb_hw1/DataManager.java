@@ -1,6 +1,6 @@
 package com.example.androidb_hw1;
 
-import com.example.common.CupType;
+import com.example.common.Models.CupType;
 import com.example.common.DataManagerBase;
 
 import java.util.ArrayList;
@@ -17,5 +17,5 @@ public class DataManager extends DataManagerBase {
     }
 
     public int getGoalInCups(){return 10;}
-    public int getGoalInMilliliter(){return 2000;}
+    public int getGoalInML_MG(){return 2000;}
 }

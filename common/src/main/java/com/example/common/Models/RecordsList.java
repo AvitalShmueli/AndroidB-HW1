@@ -1,13 +1,11 @@
-package com.example.common;
+package com.example.common.Models;
 
 import android.util.Log;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.Locale;
 
@@ -17,6 +15,8 @@ public class RecordsList {
     private String listName = "";
     private ArrayList<Record> recordsArrayList = new ArrayList<>();
     private int streak = 0;
+    private String unit;
+    private int dailyGoal;
 
     public RecordsList() {
     }
@@ -46,6 +46,15 @@ public class RecordsList {
         return this;
     }
 
+    public int getDailyGoal() {
+        return dailyGoal;
+    }
+
+    public RecordsList setDailyGoal(int dailyGoal) {
+        this.dailyGoal = dailyGoal;
+        return this;
+    }
+
     public RecordsList add(Record record) {
         if(!recordsArrayList.isEmpty() && isStreakSaved())
             streak++;
@@ -54,11 +63,23 @@ public class RecordsList {
         return this;
     }
 
+    public String getUnit() {
+        return unit;
+    }
+
+    public RecordsList setUnit(String unit) {
+        this.unit = unit;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "RecordsList{" +
                 "listName='" + listName + '\'' +
-                ", recordsArrayList=" + recordsArrayList + '\'' +
+                ", recordsArrayList=" + recordsArrayList +
+                ", streak=" + streak +
+                ", unit='" + unit + '\'' +
+                ", dailyGoal=" + dailyGoal +
                 '}';
     }
 
@@ -97,7 +118,7 @@ public class RecordsList {
         Date todayDate = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         String today = dateFormat.format(todayDate);
-        //String today = "23-06-2024";
+        //String today = "22-06-2024";
         Log.d("TEST TIME_RecordsList", today);
         return  today;
     }
@@ -107,8 +128,13 @@ public class RecordsList {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, -1);
         String yesterday = dateFormat.format(cal.getTime());
-        return recordsArrayList.get(recordsArrayList.size() - 1).getDate().equals(yesterday);
-    }
+        boolean isLastRecordWasYesterday = recordsArrayList.get(recordsArrayList.size() - 1).getDate().equals(yesterday);
+        boolean isLastStreakWasYesterday;
+        if(unit.equals("ml"))
+            isLastStreakWasYesterday = recordsArrayList.get(recordsArrayList.size() - 1).getCapacity()/220 >= dailyGoal;
+        else  isLastStreakWasYesterday = recordsArrayList.get(recordsArrayList.size() - 1).getCapacity() <= dailyGoal;
 
+        return isLastRecordWasYesterday && isLastStreakWasYesterday;
+    }
 
 }

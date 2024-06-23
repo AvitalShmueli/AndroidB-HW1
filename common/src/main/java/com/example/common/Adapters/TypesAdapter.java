@@ -1,4 +1,4 @@
-package com.example.common;
+package com.example.common.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.common.Interfaces.CupTypeCallback;
+import com.example.common.Models.CupType;
+import com.example.common.R;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
 
@@ -41,7 +44,9 @@ public class TypesAdapter extends RecyclerView.Adapter<TypesAdapter.TypeViewHold
     public void onBindViewHolder(@NonNull TypesAdapter.TypeViewHolder holder, int position) {
         CupType cupType = getItem(position);
         holder.item_LBL_type.setText(cupType.getType());
-        holder.item_LBL_capacity.setText(String.valueOf(cupType.getCapacity()));
+        StringBuffer strCapacity = new StringBuffer();
+        strCapacity.append(String.valueOf(cupType.getCapacity())).append(cupType.getUnit());
+        holder.item_LBL_capacity.setText(strCapacity);
         holder.item_IMG_photo.setImageResource(cupType.getDrawableImg());
         holder.item_CARD_background.setBackground(null);
         int x = 1;
@@ -94,18 +99,13 @@ public class TypesAdapter extends RecyclerView.Adapter<TypesAdapter.TypeViewHold
     private void setSingleSelection(int adapterPosition) {
         if(adapterPosition == RecyclerView.NO_POSITION)
             return;
-        //int old_pos = singleItem_selection_position;
-        //Log.d("ADAPTER TEST","pos "+adapterPosition +" | old "+old_pos);
+
         CupType type = cupTypes.get(adapterPosition);
         type.setSelected(!type.isSelected());
         if(singleItem_selection_position != -1 && singleItem_selection_position != adapterPosition)
             cupTypes.get(singleItem_selection_position).setSelected(false);
-        //Log.d("ADAPTER TEST","before1_ "+cupTypes.toString());
         notifyItemChanged(singleItem_selection_position);
-        //Log.d("ADAPTER TEST","after1_ "+cupTypes.toString());
         singleItem_selection_position = adapterPosition;
-        //Log.d("ADAPTER TEST","before2_ "+cupTypes.toString());
         notifyItemChanged(singleItem_selection_position);
-        //Log.d("ADAPTER TEST","after2_ "+cupTypes.toString());
     }
 }
