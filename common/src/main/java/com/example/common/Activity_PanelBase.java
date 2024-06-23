@@ -52,7 +52,6 @@ public class Activity_PanelBase extends AppCompatActivity {
         Date todayDate = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         today = dateFormat.format(todayDate);
-        //today = "22-06-2024";
         Log.d("TEST TIME", today);
 
         goal = unit.equals("ml")? dataManagerBase.getGoalInCups() : dataManagerBase.getGoalInML_MG();
@@ -65,11 +64,8 @@ public class Activity_PanelBase extends AppCompatActivity {
 
     }
 
-
-
     private void loadDataFromSP() {
         records = new Gson().fromJson(SharedPreferencesManager.getInstance().getString(RECORDS_TABLE, ""), RecordsList.class);
-
         if(records == null) {
             records = new RecordsList();
             records.setListName(getString(R.string.app_name)).setUnit(unit).setDailyGoal(goal);
@@ -85,7 +81,6 @@ public class Activity_PanelBase extends AppCompatActivity {
         }
         Log.d("RECORDS_TABLE from SP", records.toString());
         streak = records.getCurrentStreak();
-        Log.d("RECORDS_TABLE streak", String.valueOf(records.getCurrentStreak()));
     }
 
 
@@ -114,7 +109,7 @@ public class Activity_PanelBase extends AppCompatActivity {
             }
         });
 
-        if(records.getSize()<=1)
+        if(records.getSize() <= 1)
             main_LBL_streak.setVisibility(View.INVISIBLE);
         else {
             main_LBL_streak.setText(getString(R.string.streak, streak));
@@ -123,7 +118,6 @@ public class Activity_PanelBase extends AppCompatActivity {
     }
 
     void clearSelection(TypesAdapter typesAdapter){
-        int x = 1;
         for(int i = 0; i < typeArrayList.size(); i++){
             typeArrayList.get(i).setSelected(false);
         }
@@ -131,7 +125,6 @@ public class Activity_PanelBase extends AppCompatActivity {
     }
 
     boolean isChoiceSelected(){
-        int x = 1;
         for(int i = 0; i < typeArrayList.size(); i++){
             if(typeArrayList.get(i).isSelected())
                 return true;
@@ -141,7 +134,6 @@ public class Activity_PanelBase extends AppCompatActivity {
 
     protected void updateDrinkCounter(CupType cupType){
         cups += cupType.getCapacity()/220;
-        Log.d("cupTypeSelected", "cupTypeSelected++ "+cups+" ("+ amount +")");
         if(todayRecord == null){
             todayRecord = new Record().setDate(today).setCapacity(cupType.getCapacity());
             records.add(todayRecord);

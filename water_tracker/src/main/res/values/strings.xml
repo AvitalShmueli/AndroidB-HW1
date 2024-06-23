@@ -4,5 +4,4 @@
     <string name="counter_text">You drank ~%1$d cups of water today!</string>
     <string name="counter_text_left_until_goal">%1$d cups left to reach your goal.\n You can do this!</string>
     <string name="goal_reached">Good job!</string>
-    <string name="add_cup">Add cup</string>
 </resources>

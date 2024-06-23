@@ -45,11 +45,11 @@ public class TypesAdapter extends RecyclerView.Adapter<TypesAdapter.TypeViewHold
         CupType cupType = getItem(position);
         holder.item_LBL_type.setText(cupType.getType());
         StringBuffer strCapacity = new StringBuffer();
-        strCapacity.append(String.valueOf(cupType.getCapacity())).append(cupType.getUnit());
+        strCapacity.append(cupType.getCapacity()).append(cupType.getUnit());
         holder.item_LBL_capacity.setText(strCapacity);
         holder.item_IMG_photo.setImageResource(cupType.getDrawableImg());
         holder.item_CARD_background.setBackground(null);
-        int x = 1;
+
         if(singleItem_selection_position == position){
             holder.item_CARD_background.setBackgroundResource(R.drawable.border);
             if(cupType.isSelected()) {

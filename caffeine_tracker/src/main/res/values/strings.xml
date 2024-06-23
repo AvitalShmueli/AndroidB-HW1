@@ -4,5 +4,4 @@
     <string name="counter_text">You consumed %1$d mg of caffeine today</string>
     <string name="counter_text_left_until_goal">%1$d mg left until you reach the maximum recommended caffeine amount per day.</string>
     <string name="goal_reached">You reached the maximum recommended caffeine amount per day.</string>
-    <string name="add_cup">Add cup</string>
 </resources>

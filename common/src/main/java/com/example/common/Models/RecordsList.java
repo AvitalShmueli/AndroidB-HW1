@@ -118,8 +118,7 @@ public class RecordsList {
         Date todayDate = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         String today = dateFormat.format(todayDate);
-        //String today = "22-06-2024";
-        Log.d("TEST TIME_RecordsList", today);
+        Log.d("TEST TIME RecordsList", today);
         return  today;
     }
 

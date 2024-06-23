@@ -76,7 +76,7 @@
     android:layout_height="50dp"
     android:layout_below="@id/main_LBL_until_goal"
     android:layout_centerHorizontal="true"
-    android:text="@string/add_cup"
+    android:text="@string/add_amount"
     android:textStyle="bold"
     app:icon="@drawable/add_24"
     app:iconGravity="start" />

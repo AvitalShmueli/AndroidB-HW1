@@ -2,10 +2,6 @@ package com.example.common.Utilities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.util.ArrayList;
 
 public class SharedPreferencesManager {
 
@@ -56,20 +52,4 @@ public class SharedPreferencesManager {
         return sharedPref.getString(key, defaultValue);
     }
 
-
-    public <T> void putArray(String KEY, ArrayList<T> array) {
-        String json = new Gson().toJson(array);
-        sharedPref.edit().putString(KEY, json).apply();
-    }
-
-    public <T> ArrayList<T> getArray(String KEY, TypeToken typeToken) {
-        // type token == new TypeToken<ArrayList<YOUR_CLASS>>() {}
-        ArrayList<T> arr = null;
-        try {
-            arr = new Gson().fromJson(sharedPref.getString(KEY, ""), typeToken.getType());
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return arr;
-    }
 }
